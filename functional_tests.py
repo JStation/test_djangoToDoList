@@ -17,7 +17,7 @@ class NewVisitorTest(unittest.TestCase):
         self.assertIn(row_text, [row.text for row in rows])
 
     def test_can_start_a_list_and_retrieve_it_later(self):
-
+        # TODO: Functional Test leaves records on database between executions -- Fix!
         # Edith hears about a cool to-do app. She checks it out...
         self.browser.get('http://localhost:8000')
 
