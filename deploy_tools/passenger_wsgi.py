@@ -5,7 +5,7 @@ cwd = os.getcwd()
 sys.path.append(cwd)
 sys.path.append(cwd + '/source')
 
-os.environ['LD_LIBRARY_PATH'] = cwd + "/virtualenv/lib"
+os.environ['LD_LIBRARY_PATH'] = "/home/grak/Python34/libs"
 
 INTERP = cwd + "/virtualenv/bin/python"
 if sys.executable != INTERP:
