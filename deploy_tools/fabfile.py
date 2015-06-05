@@ -14,6 +14,7 @@ def deploy():
     _update_static_files(source_folder)
     _update_database(source_folder)
     _update_wsgi_file(source_folder, site_folder)
+    _reboot_python()
 
 def _create_directory_structure_if_necessary(site_folder):
     for subfolder in ('database', 'static', 'virtualenv', 'source', 'public'):
@@ -73,3 +74,6 @@ def _update_wsgi_file(source_folder, site_folder):
         wsgi_file,
         site_folder
     ))
+
+def _reboot_python():
+    run('pkill python')

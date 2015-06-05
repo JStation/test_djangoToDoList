@@ -17,18 +17,27 @@
 
     <script src="http://code.jquery.com/jquery.min.js"></script>
     <script src="qunit.js"></script>
-    <script src="../list.js"></script>
     <script>
 /*global $, test, equal */
 
-/* Copy of text in ../list.js -- second 'on <event>' test fails otherwise */
-function setupModule() {
-    $('input[name="text"]').on('click', function() {
-         $('.has-error').hide();
-    })
-    $('input[name="text"]').on('keypress', function() {
-        $('.has-error').hide();
+/* async ajax require script for pulling in external .js files */
+function require(script) {
+    $.ajax({
+        url: script,
+        dataType: "script",
+        async: false,           // <-- This is the key
+        success: function () {
+            // all good...
+        },
+        error: function () {
+            throw new Error("Could not load script " + script);
+        }
     });
+}
+
+/* Pull in .js to be tested before each test to refresh hooks */
+function setupModule() {
+    require("../list.js")
 }
 
 module('tests', {setup:setupModule});
